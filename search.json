@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "source.html",
+    "href": "source.html",
+    "title": "Source",
+    "section": "",
+    "text": "I gathered data from retrosheet, covering over one hundred thousand MLB games from 1950 to 2021. I am using the average temperature of MLB games to plot the histogram."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "[Github] (https://github.com/AlfredCheung2121)\n[email] (cheungha21@gmail.com)\nAlfred is a data technology enthusiast who demonstrates strong analytical skills and learning agility.I am doing a data science project about the willingness to pay for a baseball game with temperature. https://github.com/AlfredCheung2121/baseball-replication\nThis project was created as a part of Kane’s Data Science Bootcamp. Kane’s Free Data Science Bootcamp"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "BASEBALL",
+    "section": "",
+    "text": "This chart displays the distribution of MLB games across different temperature ranges from 1950 to 2021, revealing a clear preference for moderate to warm playing conditions. The data shows that baseball games are most frequently played in temperatures between 65-80°F, with the peak occurring in the 70-75°F range at over 22,000 games. Game frequency drops significantly at temperature extremes, with very few games played below 45°F or above 95°F, reflecting both player comfort and fan attendance considerations."
+  }
+]
