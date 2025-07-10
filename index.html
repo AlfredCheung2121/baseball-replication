@@ -67,6 +67,24 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
+
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
 
 
 <link rel="stylesheet" href="styles.css">
@@ -148,52 +166,22 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>This chart displays the distribution of MLB games across different temperature ranges from 1950 to 2021, revealing a clear preference for moderate to warm playing conditions. The data shows that baseball games are most frequently played in temperatures between 65-80°F, with the peak occurring in the 70-75°F range at over 22,000 games. Game frequency drops significantly at temperature extremes, with very few games played below 45°F or above 95°F, reflecting both player comfort and fan attendance considerations.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
-e.g.:
-  dat &lt;- vroom(...)
-  problems(dat)</code></pre>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-756fb13cfc2545dccc47" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-756fb13cfc2545dccc47">{"x":{"data":[{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85],"y":[0.47057413484153165,0.48227150887864784,0.48060373655554112,0.48965700687071384,0.50140811862089429,0.49725005491586705,0.49613905626069538,0.51098382563493416,0.51204833719177156,0.51035088566134568,0.52224808309626858,0.52475713385955847,0.52739927817433208,0.53181707915833054,0.52825933743634157,0.53096928483415318,0.53331132747802978,0.52804448797033809,0.54268819648974453,0.53624872690219316,0.53693091520672154,0.53768585498098787,0.53860755932953941,0.55090973711849567,0.54182038024791968,0.53787556093797539,0.5460950483244088,0.53414032080179197,0.55297988006247611,0.54878086039424545,0.55874437190007342],"text":"","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(70,130,180,0.8)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[55,55.379746835443036,55.759493670886073,56.139240506329116,56.518987341772153,56.898734177215189,57.278481012658226,57.658227848101262,58.037974683544306,58.417721518987342,58.797468354430379,59.177215189873415,59.556962025316459,59.936708860759495,60.316455696202532,60.696202531645568,61.075949367088612,61.455696202531648,61.835443037974684,62.215189873417721,62.594936708860757,62.974683544303801,63.354430379746837,63.734177215189874,64.113924050632917,64.493670886075947,64.87341772151899,65.25316455696202,65.632911392405063,66.012658227848107,66.392405063291136,66.77215189873418,67.151898734177223,67.531645569620252,67.911392405063296,68.291139240506325,68.670886075949369,69.050632911392398,69.430379746835442,69.810126582278485,70.189873417721515,70.569620253164558,70.949367088607602,71.329113924050631,71.708860759493675,72.088607594936718,72.468354430379748,72.848101265822791,73.22784810126582,73.607594936708864,73.987341772151893,74.367088607594937,74.74683544303798,75.12658227848101,75.506329113924053,75.886075949367097,76.265822784810126,76.64556962025317,77.025316455696199,77.405063291139243,77.784810126582272,78.164556962025316,78.544303797468359,78.924050632911388,79.303797468354432,79.683544303797476,80.063291139240505,80.443037974683548,80.822784810126592,81.202531645569621,81.582278481012665,81.962025316455694,82.341772151898738,82.721518987341767,83.101265822784811,83.481012658227854,83.860759493670884,84.240506329113927,84.620253164556971,85],"y":[0.47242320155054673,0.47469961748121542,0.47693578016352067,0.47913231373228565,0.48128984232233329,0.48340899006848692,0.48549038110556952,0.48753463956840415,0.48954239115619946,0.49151414483374678,0.49344936567148773,0.4953471913538528,0.49720675956527188,0.4990272079901753,0.50080767431299322,0.50254729621815564,0.50424521139009271,0.50590055751323493,0.50751247227201191,0.50908235954067449,0.51061945665901787,0.51212322337248994,0.51359176180601329,0.51502317408451026,0.51641556233290342,0.51776702867611535,0.51907567523906828,0.52033960414668501,0.52155691752388778,0.522725703879106,0.52383255621735381,0.52487140953884637,0.52584899406010432,0.52677203999764766,0.52764727756799712,0.52848143698767291,0.52928124847319546,0.53005344224108508,0.53080474850786219,0.53154189749004721,0.53226236185009534,0.53291861346089175,0.53351141393571289,0.53405092543976218,0.53454731013824308,0.53501073019635892,0.53545134777931314,0.5358793250523094,0.53630482418055081,0.53673800732924093,0.5371890366635832,0.53762599138257183,0.53801276659062713,0.53836206533148567,0.53868664116797116,0.5389992476629073,0.53931263837911803,0.53963956687942716,0.53999278672665862,0.54038505148363614,0.54082911471318318,0.54133124202864757,0.54184878118824709,0.54237264900110371,0.54290424965194439,0.54344498732549629,0.54399626620648622,0.54455949047964147,0.54513606432968886,0.54572739194135567,0.5463348774993686,0.54695992518845504,0.54760381476289033,0.54826622126087532,0.54894597896916952,0.54964191942296148,0.55035287415743939,0.55107767470779179,0.5518151526092071,0.55256413939687365],"text":"","type":"scatter","mode":"lines","name":"fitted values","line":{"width":4.5354330708661417,"color":"rgba(139,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":40.182648401826491,"l":48.949771689497723},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Capacity Share by Temperature (55–85°F, 1°F steps)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[53.004999999999995,86.995000000000005],"tickmode":"array","ticktext":["60","70","80"],"tickvals":[60,70,80],"categoryorder":"array","categoryarray":["60","70","80"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Average Temperature (°F)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4425,0.60749999999999993],"tickmode":"array","ticktext":["0.45","0.50","0.55","0.60"],"tickvals":[0.45000000000000001,0.5,0.55000000000000004,0.60000000000000009],"categoryorder":"array","categoryarray":["0.45","0.50","0.55","0.60"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Mean Capacity Share","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"87854c77e77":{"x":{},"y":{},"type":"bar"},"8781b822741":{"x":{},"y":{}}},"cur_data":"87854c77e77","visdat":{"87854c77e77":["function (y) ","x"],"8781b822741":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 132649 Columns: 110
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (12): day, day_night, park_id, hm_tm, hm_tm_lg, vis_tm, vis_tm_lg, cove...
-dbl  (94): dbl_hdr, attendance, duration, hm_runs, vis_runs, vis_hr, vis_k, ...
-lgl   (1): completion
-date  (2): date, end
-time  (1): imputed_start_hour
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: `funs()` was deprecated in dplyr 0.8.0.
-ℹ Please use a list of either functions or lambdas:
-
-# Simple named list: list(mean = mean, median = median)
-
-# Auto named with `tibble::lst()`: tibble::lst(mean, median)
-
-# Using lambdas list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: There were 5712 warnings in `summarise()`.
-The first warning was:
-ℹ In argument: `day = mean(day, na.rm = TRUE)`.
-ℹ In group 1: `month = 3` `year = 1996`.
-Caused by warning in `mean.default()`:
-! argument is not numeric or logical: returning NA
-ℹ Run `dplyr::last_dplyr_warnings()` to see the 5711 remaining warnings.</code></pre>
-</div>
+<p>This analysis examines the relationship between temperature and baseball attendance by plotting mean capacity share (attendance/capacity) across temperatures ranging from 55°F to 85°F in 1-degree increments. The data reveals that attendance patterns vary with temperature, with the loess trend line showing how fan turnout responds to different weather conditions within this moderate temperature range. The visualization uses bar charts to show the actual mean capacity share at each temperature point, overlaid with a smooth trend line to highlight the overall temperature-attendance relationship, providing insights into optimal weather conditions for baseball game attendance.</p>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>The data shows a clear upward trend in ballpark capacity utilization from 1950 to 2020, with attendance as a percentage of capacity increasing from approximately 27% in 1950 to around 73% by 2020. The trend line reveals a steady linear increase over the 70-year period, though there is considerable year-to-year variation with some notable dips, particularly around the mid-1970s where capacity share dropped as low as 5-10%. The overall pattern suggests growing popularity of baseball attendance relative to stadium capacity, with the most dramatic improvements occurring from the 1980s onward when capacity utilization consistently exceeded 50%.</p>
 
 
 
