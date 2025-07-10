@@ -5,6 +5,7 @@ AUTHOR: Alfred Cheung
 execute: 
   message: false
   echo: false
+  warning: false
 
 ---
 
@@ -12,6 +13,10 @@ execute:
 #| echo: FALSE
 #| message: FALSE
 library(tidyverse,ggplot2)
+
+library(
+       viridis
+       )
 ```
 
 
@@ -83,7 +88,51 @@ This chart displays the distribution of MLB games across different temperature r
 
 
 
+
+
 ```{r}
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(plotly)
+
+df <- read_csv("retro_weather2.csv")
+
+# Step 1: Clean & round temperature
+df_plot <- df %>%
+  mutate(capacity_share = attendance / capacity,
+         temp_round = round(wtemp_avg)) %>%
+  filter(temp_round >= 55, temp_round <= 85, !is.na(capacity_share)) %>%
+  group_by(temp_round) %>%
+  summarise(mean_capacity_share = mean(capacity_share, na.rm = TRUE),
+            se = sd(capacity_share, na.rm = TRUE) / sqrt(n()),
+            n = n()) %>%
+  ungroup()
+
+# Step 2: Plot
+a <- ggplot(df_plot, aes(x = temp_round, y = mean_capacity_share)) +
+  geom_col(fill = "steelblue", alpha = 0.8) +
+  geom_smooth(method = "loess", se = FALSE, color = "darkred", size = 1.2) +
+  labs(title = "Capacity Share by Temperature (55–85°F, 1°F steps)",
+       subtitle = "With error bars, sample size, and loess trend",
+       x = "Average Temperature (°F)",
+       y = "Mean Capacity Share") +
+  coord_cartesian(ylim = c(0.45, 0.6)) +
+  theme_minimal()
+
+ggplotly(a, tooltip = "text")
+
+
+
+```
+
+This analysis examines the relationship between temperature and baseball attendance by plotting mean capacity share (attendance/capacity) across temperatures ranging from 55°F to 85°F in 1-degree increments. The data reveals that attendance patterns vary with temperature, with the loess trend line showing how fan turnout responds to different weather conditions within this moderate temperature range. The visualization uses bar charts to show the actual mean capacity share at each temperature point, overlaid with a smooth trend line to highlight the overall temperature-attendance relationship, providing insights into optimal weather conditions for baseball game attendance.
+
+
+
+```{r}
+#| warning: FALSE
+
 # Description -------------------------------------------------------------
 
 # This script plots the average attendance data as a share of stadium capacity across the sample period
@@ -91,9 +140,7 @@ This chart displays the distribution of MLB games across different temperature r
 # -------------------------------------------------------------------------
 
 # install/load other packages
-library(tidyverse,
-       viridis
-       )
+
 
 # turn off scientific notation
 options(scipen = 999)
@@ -127,7 +174,11 @@ ggplot(retro, aes(date, capacity_share)) +
                date_labels = '%Y') +
   theme_classic() +
   theme(axis.title.x = element_blank(),
-        panel.grid.major = element_line())
+        panel.grid.major = element_line())+
+  geom_smooth(method='lm')+
+  labs(title = "Baseball Attendance as Share of Stadium Capacity Over Time")
   
 
 ```
+
+The data shows a clear upward trend in ballpark capacity utilization from 1950 to 2020, with attendance as a percentage of capacity increasing from approximately 27% in 1950 to around 73% by 2020. The trend line reveals a steady linear increase over the 70-year period, though there is considerable year-to-year variation with some notable dips, particularly around the mid-1970s where capacity share dropped as low as 5-10%. The overall pattern suggests growing popularity of baseball attendance relative to stadium capacity, with the most dramatic improvements occurring from the 1980s onward when capacity utilization consistently exceeded 50%.
