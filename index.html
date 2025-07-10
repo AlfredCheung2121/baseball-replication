@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BASEBALL – WillingThe Willingness to Pay for a Cooler Day</title>
+<title>BASEBALL – The Willingness to Pay for a Cooler Day</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">WillingThe Willingness to Pay for a Cooler Day</span>
+    <span class="navbar-title">The Willingness to Pay for a Cooler Day</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -147,6 +147,53 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>This chart displays the distribution of MLB games across different temperature ranges from 1950 to 2021, revealing a clear preference for moderate to warm playing conditions. The data shows that baseball games are most frequently played in temperatures between 65-80°F, with the peak occurring in the 70-75°F range at over 22,000 games. Game frequency drops significantly at temperature extremes, with very few games played below 45°F or above 95°F, reflecting both player comfort and fan attendance considerations.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
+e.g.:
+  dat &lt;- vroom(...)
+  problems(dat)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 132649 Columns: 110
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (12): day, day_night, park_id, hm_tm, hm_tm_lg, vis_tm, vis_tm_lg, cove...
+dbl  (94): dbl_hdr, attendance, duration, hm_runs, vis_runs, vis_hr, vis_k, ...
+lgl   (1): completion
+date  (2): date, end
+time  (1): imputed_start_hour
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `funs()` was deprecated in dplyr 0.8.0.
+ℹ Please use a list of either functions or lambdas:
+
+# Simple named list: list(mean = mean, median = median)
+
+# Auto named with `tibble::lst()`: tibble::lst(mean, median)
+
+# Using lambdas list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There were 5712 warnings in `summarise()`.
+The first warning was:
+ℹ In argument: `day = mean(day, na.rm = TRUE)`.
+ℹ In group 1: `month = 3` `year = 1996`.
+Caused by warning in `mean.default()`:
+! argument is not numeric or logical: returning NA
+ℹ Run `dplyr::last_dplyr_warnings()` to see the 5711 remaining warnings.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 
@@ -223,7 +270,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/AlfredCheung2121\.github\.io\/baseball-replication\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
