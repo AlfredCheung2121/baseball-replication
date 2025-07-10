@@ -1,0 +1,133 @@
+---
+title: "BASEBALL"
+AUTHOR: Alfred Cheung
+
+execute: 
+  message: false
+  echo: false
+
+---
+
+```{r}
+#| echo: FALSE
+#| message: FALSE
+library(tidyverse,ggplot2)
+```
+
+
+```{r}
+#| warning: FALSE
+
+
+df = read.csv("retro_weather2.csv")
+
+df = df %>%
+  # Make >95 the highest bin  **Adding Why for the people who didnt know how to code**
+  mutate(wtemp_avg_bin12=ifelse(wtemp_avg_bin13==1,1,wtemp_avg_bin12)) %>%
+  # create bins
+  mutate(temp_bin = case_when(wtemp_avg_bin1==1 ~ '<45°',
+                              wtemp_avg_bin2==1 ~ '45-50°',
+                              wtemp_avg_bin3==1 ~ '50-55°',
+                              wtemp_avg_bin4==1 ~ '55-60°',
+                              wtemp_avg_bin5==1 ~ '60-65°',
+                              wtemp_avg_bin6==1 ~ '65-70°',
+                              wtemp_avg_bin7==1 ~ '70-75°',
+                              wtemp_avg_bin8==1 ~ '75-80°',
+                              wtemp_avg_bin9==1 ~ '80-85°',
+                              wtemp_avg_bin10==1 ~ '85-90°',
+                              wtemp_avg_bin11==1 ~ '90-95°',
+                              wtemp_avg_bin12==1 ~ '>95°')) %>%
+  # filter out NAs introduced by having Canada in the data
+  filter(!is.na(wtemp_avg)) %>%
+  # group by bin and count number of obs
+  count(temp_bin) 
+
+# set the bins in a character vector
+bins = c('<45°', '45-50°', '50-55°', '55-60°', '60-65°', '65-70°',
+         '70-75°', '75-80°', '80-85°', '85-90°', '90-95°', '>95°')
+
+# create factor levels for the temp bins
+df$temp_bin = factor(df$temp_bin, levels = bins)
+
+# plot the histogram ------------------------------------------------------
+gg = ggplot(df, aes(temp_bin, n)) +
+  geom_col(width = .85, fill = "#005A9C")  + 
+  scale_y_continuous(breaks = c(0, 5000, 10000, 15000, 20000),
+                     labels = c('0', '5,000', '10,000', '15,000', 
+                                '20,000'),
+                     name = 'Count', 
+                     expand = c(0, 0)) +
+  scale_x_discrete(name = 'Temperature Bin',
+                   expand = c(0, 0)) +
+  theme_minimal() +
+  coord_cartesian(clip = "off") +
+  theme(panel.grid = element_blank(),
+        panel.grid.major.y = element_line(color = 'grey'),
+        axis.ticks.x = element_line())
+
+# display
+
+# presentation version
+presentation = gg +
+  labs(title = 'Number of MLB games in each 5-degree temperature bin, 1950-2000') +
+  theme(axis.text = element_text(family = 'Lato', size = 12),
+        axis.title = element_text(family = 'Lato', size = 12),
+        plot.title = element_text(lineheight = 1.1, family = 'Lato', size = 20),
+        plot.title.position = 'plot')
+
+#display
+presentation
+```
+
+This chart displays the distribution of MLB games across different temperature ranges from 1950 to 2021, revealing a clear preference for moderate to warm playing conditions. The data shows that baseball games are most frequently played in temperatures between 65-80°F, with the peak occurring in the 70-75°F range at over 22,000 games. Game frequency drops significantly at temperature extremes, with very few games played below 45°F or above 95°F, reflecting both player comfort and fan attendance considerations.
+
+
+
+```{r}
+# Description -------------------------------------------------------------
+
+# This script plots the average attendance data as a share of stadium capacity across the sample period
+
+# -------------------------------------------------------------------------
+
+# install/load other packages
+library(tidyverse,
+       viridis
+       )
+
+# turn off scientific notation
+options(scipen = 999)
+
+# load the retrosheet data
+retro = read_csv("retro_weather2.csv")
+
+
+# transform the data ------------------------------------------------------
+retro = retro %>%
+  # create a day-of-the-year variable and make it an R date
+  mutate(week = week(date),
+         month = month(date),
+         month_day = format(date, "%B %d"),
+         month_day = as.Date(month_day, "%B %d"),
+         capacity_share = attendance / capacity) %>%
+  # group by month_day-team
+  group_by(month, year) %>%
+  # summarise for average attendance
+  summarise_all(funs(mean), na.rm=TRUE)
+
+# plot the data -----------------------------------------------------------
+ggplot(retro, aes(date, capacity_share)) +
+  geom_line(color = '#3D8361') +  
+  scale_y_continuous(
+    name = "Ballpark Capacity",
+    breaks = c(.1, .2, .3, .4, .5, .6, .7, .8, .9, 1),
+    labels = scales::percent_format(accuracy = 1)) + 
+  scale_x_date(breaks = seq(as.Date("1950-01-01"), as.Date("2021-01-01"),
+                            by = "5 years"),
+               date_labels = '%Y') +
+  theme_classic() +
+  theme(axis.title.x = element_blank(),
+        panel.grid.major = element_line())
+  
+
+```

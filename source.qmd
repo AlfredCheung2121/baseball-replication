@@ -1,0 +1,7 @@
+---
+title: "Source"
+format: html
+---
+
+I gathered data from retrosheet, covering over one hundred thousand MLB games from 1950 to 2021. I am using the average temperature of MLB games to plot the histogram.
+

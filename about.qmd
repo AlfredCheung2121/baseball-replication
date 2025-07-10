@@ -1,0 +1,16 @@
+---
+title: "About"
+AUTHOR: Alfred Cheung
+---
+[Github](https://github.com/AlfredCheung2121)
+
+[email](cheungha21@gmail.com)
+
+Alfred is a data technology enthusiast who demonstrates strong analytical skills and learning agility.I am doing a data science project about the willingness to pay for a baseball game with temperature. https://github.com/AlfredCheung2121/baseball-replication
+
+This project was created as a part of Kane’s Data Science Bootcamp.
+[Kane's Free Data Science Bootcamp](https://bootcamp.davidkane.info/)
+
+
+
+
